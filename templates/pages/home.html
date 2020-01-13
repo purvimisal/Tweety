@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+{% block head_title %} 
+This is amazing
+{% endblock head_title %}
+
+{% block content %}
+Welcome to TwitTwit
+
+
+<div id='tweets'>
+    Loading...
+</div>
+
+<script>
+    const tweetsElement = document.getElementById("tweets") //$('tweets')
+    // tweetsElement.innerHTML = 'Loading...'
+
+    // var el1 = '<h1>1</h1>'
+    // var el2 = '<h1>2</h1>'
+    // var el3 = '<h1>3</h1>'
+
+    // tweetsElement.innerHTML = el1 + el2 + el3
+
+    const xhr = new XMLHttpRequest()  
+    const method = 'GET'
+    const url = "/tweets"
+    const responseType = "json"
+
+
+    function formatTweetElement(tweet) {
+        var formattedTweet = "<div class='mb-4' id='tweet-"+tweet.id+"' tweet>" + "<p>" + tweet.content + "</p></div>";
+        return formattedTweet;
+    }
+
+    xhr.responseType = responseType;
+    xhr.open(method, url)
+    xhr.onload = function() {
+        const serverResponse = xhr.response
+        var listedItems = xhr.response.response // array
+        var finalTweetstr = ""
+        var i;
+        for(i=0; i<listedItems.length;i++){
+            var tweetObj = listedItems[i];
+            var currItem = formatTweetElement(tweetObj);
+            finalTweetstr += currItem;
+        }
+        tweetsElement.innerHTML = finalTweetstr
+        // console.log(listedItems)
+
+    }
+    xhr.send()
+</script>
+
+{% endblock content %}

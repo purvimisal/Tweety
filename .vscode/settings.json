@@ -1,3 +1,4 @@
 {
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "python.pythonPath": "/home/purvi/.local/share/virtualenvs/twitter-prototype-fMpe7D3O/bin/python"
 }
