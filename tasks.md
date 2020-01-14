@@ -11,9 +11,10 @@
         - User + who they follow
 
 2. Tweets
-    - Creating
-        - Text
-        - Image
+    - Creating - DONE
+        - Text - DONE
+        - Image -> Media Storage Server
+    - Liking
     - Delete
     - Retweeting
 

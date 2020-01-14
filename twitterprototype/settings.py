@@ -26,8 +26,8 @@ SECRET_KEY = 'yzm4ze-8lx&+i42m_qxg&#dmd#ns6s8&)6%z&($ikk)lwau@s_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['127.0.0.1','.mydomain.com']
+LOGIN_URL = "/login"
 
 # Application definition
 
