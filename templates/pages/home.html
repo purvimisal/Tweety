@@ -94,7 +94,14 @@ This is amazing
 
 
 
-            } else if (xhr.status === 500){
+            } else if (xhr.status === 401) {
+                alert("You must login!")
+                window.location.href = "/login"
+            }else if (xhr.status === 403) {
+                alert("You must login!")
+                window.location.href = "/login"
+            }
+             else if (xhr.status === 500){
                 const errorJson = xhr.response;
                 alert("There was a server error, please try again.")
             }
@@ -127,7 +134,7 @@ This is amazing
     xhr.open(method, url)
     xhr.onload = function() {
         const serverResponse = xhr.response
-        var listedItems = xhr.response.response // array
+        var listedItems = serverResponse // array
         var finalTweetstr = ""
         var i;
         for(i=0; i<listedItems.length;i++){

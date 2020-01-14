@@ -11,15 +11,15 @@
         - User + who they follow
 
 2. Tweets
-    - Creating - DONE
-        - Text - DONE
-        - Image -> Media Storage Server
-    - Liking
-    - Delete
-    - Retweeting
+    - User Permissions
+        - Creating - DONE
+            - Text - DONE
+            - Image -> Media Storage Server
+        - Liking or Unliking
+        - Delete - DONE
+        - Retweeting
 
 3. Following/ Follower
-
 
 
 Extensive ToDos:
