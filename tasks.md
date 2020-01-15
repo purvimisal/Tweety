@@ -18,6 +18,8 @@
         - Liking or Unliking - DONE
         - Delete - DONE
         - Retweeting
+            - Read only serializer
+            - Create only serializer
 
 3. Following/ Follower
 
