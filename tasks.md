@@ -17,7 +17,7 @@
             - Image -> Media Storage Server
         - Liking or Unliking - DONE
         - Delete - DONE
-        - Retweeting
+        - Retweeting - DONE
             - Read only serializer
             - Create only serializer
 

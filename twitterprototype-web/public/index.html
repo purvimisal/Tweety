@@ -31,6 +31,13 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="twittwit"></div>
+    <!-- <div id="twittwit" data-username="purvi" data-valid="true"></div> -->
+    <!-- <div class='twittwit-detail' data-tweet-id="12" data-class-name='col-6 mx-auto'></div>
+    <div class='twittwit-detail' data-tweet-id="45" data-class-name='col-6 mx-auto'></div>
+    <div class='twittwit-detail' data-tweet-id="60" data-class-name='col-6 mx-auto'></div> -->
+
+    <div id='tweet-container'></div>
+    <div id="twittwit" data-username="default-user1" data-can-tweet="false"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -41,5 +48,26 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      var path = window.location.pathname
+      console.log(path)
+
+      var match = path.match(/(\d+)/);
+      if (match) {
+        var tweetId = match[0]
+        // var tweetId = 59
+        var twitEl = document.getElementById("twittwit")
+        twitEl.className = 'd-none'
+        var tweetEl = "<div class='twittwit-detail' data-tweet-id=" + tweetId + " data-class-name='col-6 mx-auto'></div>"
+        var mainContainer = document.getElementById("tweet-container")
+        mainContainer.innerHTML = tweetEl
+      }
+
+
+
+      </script>
+  
+  
+  
   </body>
 </html>
