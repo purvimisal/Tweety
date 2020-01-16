@@ -14,7 +14,6 @@ from rest_framework.permissions import IsAuthenticated
 
 ALLOWED_HOSTS = settings.ALLOWED_HOSTS
 
-
 def home_view(request, *args, **kwargs):
     username = None
     if request.user.is_authenticated:
