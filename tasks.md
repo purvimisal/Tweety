@@ -15,7 +15,7 @@
         - Creating - DONE
             - Text - DONE
             - Image -> Media Storage Server
-        - Liking or Unliking
+        - Liking or Unliking - DONE
         - Delete - DONE
         - Retweeting
 
