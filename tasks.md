@@ -1,11 +1,11 @@
 1. Users
-    - Register
-    - Login
-    - Logout
-    - Profile
+    - Register - DONE
+    - Login - DONE
+    - Logout - DONE
+    - Profile - DONE
         - Image
         - Text 
-        - Follow Button
+        - Follow Button - DONE
     - Feed
         - User's feed
         - User + who they follow
