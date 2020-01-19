@@ -4,6 +4,7 @@ from django.http import HttpResponse, Http404, JsonResponse
 from django.shortcuts import render, redirect
 from django.utils.http import is_safe_url
 
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticated
@@ -54,14 +55,24 @@ def tweet_delete_view(request, tweet_id, *args, **kwargs):
     return Response({"message": "Tweet deleted."}, status=200)
 
 
+def get_paginated_queryset_response(qs, request):
+    paginator = PageNumberPagination()
+    paginator.page_size = 20
+    paginated_qs = paginator.paginate_queryset(qs, request)
+    serializer = TweetSerializer(paginated_qs, many=True)
+    return paginator.get_paginated_response(serializer.data) # Response( serializer.data, status=200)
+
+
+
 @api_view(['GET'])
 def tweet_list_view(request, *args, **kwargs):
     qs = Tweet.objects.all()
     username = request.GET.get('username') # ?username=purvi
     if username != None:
         qs = qs.by_username(username)
-    serializer = TweetSerializer(qs, many=True)
-    return Response(serializer.data, status=200)
+    return get_paginated_queryset_response(qs, request)
+
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -75,7 +86,7 @@ def tweet_feed_view(request, *args, **kwargs):
     # qs = Tweet.objects.filter(user__id__in=followed_users_id).order_by("-timestamp")
     qs = Tweet.objects.feed(user)
     serializer = TweetSerializer(qs, many=True)
-    return Response( serializer.data, status=200)
+    return get_paginated_queryset_response(qs, request)
 
 
 
@@ -114,6 +125,7 @@ def tweet_action_view(request, *args, **kwargs):
             serializer = TweetSerializer(new_tweet)
             return Response(serializer.data, status=201)
     return Response({}, status=200)
+
 
 
 
