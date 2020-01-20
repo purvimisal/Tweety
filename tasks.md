@@ -4,11 +4,11 @@
     - Logout - DONE
     - Profile - DONE
         - Image
-        - Text 
+        - Text - DONE
         - Follow Button - DONE
     - Feed
-        - User's feed
-        - User + who they follow
+        - User's feed - DONE 
+        - User + who they follow - DONE
 
 2. Tweets
     - User Permissions
@@ -21,7 +21,7 @@
             - Read only serializer
             - Create only serializer
 
-3. Following/ Follower
+3. Following/ Follower - DONE
 
 
 Extensive ToDos:
