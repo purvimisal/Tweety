@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from ..aws.conf import *
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 #on same level/directory as manage.py
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     # third-party
     'corsheaders',
     'rest_framework',
+    'storages',
     # internal
     'tweets',
     'accounts',

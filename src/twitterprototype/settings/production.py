@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
+from ..aws.conf import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 #on same level/directory as manage.py
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -41,9 +41,9 @@ MANAGERS = ADMINS
 SECRET_KEY = os.environ.get('SECRET_KEY','yzm4ze-8lx&+i42m_qxg&#dmd#ns6s8&)6%z&($ikk)lwau@s_')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://twit-twit.herokuapp.com/','127.0.0.1', '.cfe.sh', 'localhost']
+ALLOWED_HOSTS = ['twit-twit.herokuapp.com','0.0.0.0','127.0.0.1', '.cfe.sh', 'localhost']
 LOGIN_URL = "/login"
 MAX_TWEET_LENGTH = 240
 TWEET_ACTION_OPTIONS = ["like", "unlike", "retweet"]
@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # third-party
     'corsheaders',
+    'storages',
     'rest_framework',
     # internal
     'tweets',
@@ -68,9 +69,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -150,15 +151,24 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
-STATIC_ROOT = os.path.join(BASE_DIR, "static-root")
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+# ]
+# STATIC_ROOT = os.path.join(BASE_DIR, "static-root")
+
+# CORS_ORIGIN_ALLOW_ALL = False # any website has access to my api
+
+CORS_ORIGIN_WHITELIST = (
+    'twit-twit.herokuapp.com',
+    'localhost:8000',
+    '172.18.197.142',
+
+)
+CORS_ALLOW_CREDENTIALS = False
 
 
-CORS_ORIGIN_ALLOW_ALL = True # any website has access to my api
 CORS_URLS_REGEX = r'^/api/.*$'
 
 
@@ -175,9 +185,9 @@ if DEBUG:
     DEFAULT_RENDERER_CLASSES += [
         'rest_framework.renderers.BrowsableAPIRenderer',
     ]
-    DEFAULT_AUTHENTICATION_CLASSES += [
-        'twitterprototype.rest_api.dev.DevAuthentication'
-    ]
+    # DEFAULT_AUTHENTICATION_CLASSES += [
+    #     'twitterprototype.rest_api.dev.DevAuthentication'
+    # ]
 
 REST_FRAMEWORK = {
 

@@ -1,6 +1,9 @@
 twitterprototype/settings/local.py
+twitterprototype/settings/local2.py
 db.sqlite3
 .py[cod]
+
+local.py
 
 .DS_Store
 bin/
