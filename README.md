@@ -33,7 +33,7 @@ Tweety is a full stack application which can be used for micro blogging (like Tw
 ![Tech stack](https://github.com/purvimisal/Tweety/blob/master/img/techstack.png)
 
 ### System Design Overview 
-![System design](https://github.com/purvimisal/Tweety/blob/master/img/tweety-sys.png)  
+![System design](https://github.com/purvimisal/Tweety/blob/master/img/sys-design.png)  
 
 >ReactJS renders the UI by fetching the statis HTML files from AWS S3 bucket. On any User event, the API calls are made to the DJango Rest framework backend deployed on heroku. Information is fetched and stored in PostGres from heroku datastores. 
 
